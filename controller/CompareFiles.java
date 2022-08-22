@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 // import org.apache.commons.io.FileUtils;
 import java.io.IOException;
 
+
 // class CompareFiles{
 //     private static boolean isEquals(File file1, File file2){
 //         try {
@@ -35,8 +36,8 @@ import java.io.IOException;
 class CompareFiles{
     public static void main(String[] args) throws IOException
 	{
-		File file1 = new File("./file1.txt");
-		File file2 = new File("./file2.txt");
+		File file1 = new File(args[0]);
+		File file2 = new File(args[1]);
 
 		boolean equal = isEquals(file1, file2);
 		if (equal) {
@@ -48,8 +49,8 @@ class CompareFiles{
 }
 
     private static boolean isEquals(File file1, File file2) throws IOException { 
-        try (BufferedInputStream inp1 = new BufferedInputStream(new FileInputStream(file1));
-        BufferedInputStream inp2 = new BufferedInputStream(new FileInputStream(file2))){
+        try (FileInputStream inp1 = new FileInputStream(file1);
+        FileInputStream inp2 = new FileInputStream(file2)){
             
         int c = 0;
         int position = 1;
